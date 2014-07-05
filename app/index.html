@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Resume'</title>
+    <title>Bio-Zite</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -19,7 +19,7 @@
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
+    <meta name="msapplication-TileColor" content="#4a203d">
 
     <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
     <!--
@@ -30,10 +30,12 @@
     <link rel="stylesheet" href="styles/h5bp.css">
     <link rel="stylesheet" href="styles/components/components.css">
     <link rel="stylesheet" href="styles/main.css">
-
-    <!-- Scripts for Web API access -->
     <script src="http://connect.soundcloud.com/sdk.js"></script>
-
+    // <script>
+    // SC.Initialize({
+    //     client_id: "206427496ca7526c008ac4b37a2ab508"
+    // });
+    // </script>
     <!-- endbuild -->
 </head>
 
@@ -46,12 +48,7 @@
             <h1 class="logo">Vita</h1>
             <section class="app-bar-actions">
                 <!-- Put App Bar Buttons Here -->
-                <nav class="bottom-bar">
-                    <button class="bottom-btn"></button>
-                    <button class="bottom-btn"></button>
-                    <button class="bottom-btn"></button>
-                    <button class="bottom-btn"></button>
-                </nav>
+             
             </section>
         </div>
     </header>
@@ -59,13 +56,11 @@
     <nav class="navdrawer-container promote-layer">
         <h4>Navigation</h4>
         <ul>
-            <li><a href="#hello">PlaceHolder</a>
+            <li><a href="#hello">About Me</a>
             </li>
             <li><a href="#get-started">Resume'</a>
             </li>
             <li><a href="styleguide/index.html">Twitter</a>
-            </li>
-            <li><a href="#index.html">SoundCloud</a>
             </li>
             <li><a href="#SkateSesh">Blading-Adventures</a>
             </li>
@@ -73,40 +68,28 @@
     </nav>
 
     <main>
+        <!--h1#intro{Hugo F. Cedano}(div.Container>ul>li.items$*4)-->
         <h1 id="intro">Hugo F. Cedano</h1>
         <div class="Container">
             <ul>
-                <li>Attends Florida Internationl University</li>
-                <li>Plays a mean Guitar ;)</li>
-                <li>Introduction (ph)</li>
+                <li>Junior at Florida International University</li>
+                <li>Computer Science and Philosophy</li>
+                <br>
             </ul>
         </div>
-        <div class="container">
-            <script>
-            // initialize soundcloud API with key
-            SC.initialize({
-                // This is the sample client_id. you should replace this with your own
-                client_id: "206427496ca7526c008ac4b37a2ab508"
-            });
+        <div id="SCWidget"></div>
+        <script type="text/JavaScript">
+        SC.oEmbed("https://soundcloud.com/vahlk/tracks", {
+            color: "#4a203d"
+        }, document.getElementById("SCWidget"));
+        </script>
 
-            function embed(id) {
-                SC.oEmbed("http://soundcloud.com/vahlk/" + id // user or playlist to embed
-                    , {
-                        color: "ff0066",
-                        auto_play: true,
-                        maxwidth: 500,
-                        maxheight: 1000,
-                        show_comments: true
-                    } // options
-                    , document.getElementById("scWidget") // what element to attach player to
-                );
-            }
-            </script>
-        </div>
     </main>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+    <!-- SoundCloud API / Initialize SC API with key-->
+
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
