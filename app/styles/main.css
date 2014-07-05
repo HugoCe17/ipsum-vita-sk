@@ -210,11 +210,11 @@ main {
   /* Height of the header */
   padding: 60px 16px 16px 16px;
   min-height: 100%;
-  overflow-y: scroll;
+  
 }
 
 /** Larger Screens - desktops and tablets **/
-@media all and (min-width: 800px) {
+@media all and (min-width: 1200px) {
   .app-bar {
     position: relative;
   }
@@ -301,7 +301,7 @@ main {
   }
 }
 
-@media all and (min-width: 800px) and (max-width: 800px) {
+@media all and (min-width: 600px) and (max-width: 1200px) {
   .app-bar .logo {
     float: none;
     width: 100%;
@@ -329,10 +329,9 @@ main {
     flex: 1;
     text-align: center;
   }
-}
-
-#SCWidget {
+  #SCWidget {
   height: auto;
-  width: 600px;
+  width: auto;
 
+}
 }
