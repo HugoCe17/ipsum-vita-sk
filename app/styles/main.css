@@ -76,7 +76,7 @@ body {
     background-color: transparent;
     border: none;
     padding: 0;
-    transition: background-color 0.2s ease-out;
+    transition: background-color 0.1s ease-out;
     -webkit-tap-highlight-color: transparent;
 }
 .app-bar button img {
@@ -182,14 +182,14 @@ main {
     min-height: 100%;
 }
 /** Larger Screens - desktops and tablets **/
- @media all and (min-width: 1200px) {
+ @media all and (min-width: 800px) {
     .app-bar {
         position: relative;
     }
     .app-bar-container {
         display: block;
         height: 110px;
-        max-width: 864px;
+        max-width: 600px;
         padding: 0 16px;
         box-sizing: border-box;
         background-color: #4a203d;
@@ -226,7 +226,7 @@ main {
         -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
         transition: none;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
     .navdrawer-container h4 {
         display: none;
@@ -243,13 +243,11 @@ main {
         border: none;
     }
     main {
-        max-width: 864px;
+        max-width: 900px;
         padding-top: 0;
         min-height: initial;
     }
-    body {
-        overflow-y: scroll;
-    }
+
     .navdrawer-container {
         position: relative;
         margin-top: 0;
@@ -262,7 +260,7 @@ main {
         line-height: normal;
         text-align: left;
         padding-top: 36px;
-        overflow-y: scroll;
+        overflow-y: hidden;
     }
     .app-bar-container {
         height: auto;
@@ -280,7 +278,11 @@ main {
         text-align: left;
     }
     .sc-container {
-        height: 100%;
-        width: 100%;
+        height: 200px;
+        width: auto;
+    }
+    .twitter-button-container {
+    position: relative;
+       
     }
 }
