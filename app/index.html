@@ -30,13 +30,6 @@
     <link rel="stylesheet" href="styles/h5bp.css">
     <link rel="stylesheet" href="styles/components/components.css">
     <link rel="stylesheet" href="styles/main.css">
-    <script src="http://connect.soundcloud.com/sdk.js"></script>
-    <script>
-    // SC.Initialize({
-    //     client_id: "206427496ca7526c008ac4b37a2ab508"
-    // });
-    //
-    </script>
     <!-- endbuild -->
 </head>
 
@@ -57,32 +50,50 @@
     <nav class="navdrawer-container promote-layer">
         <h4>Navigation</h4>
         <ul>
-            <li><a href="#Hello">About Me</a>
+            <li><a id="about-me-btn" href="javascript:void(0)">About Me</a>
             </li>
-            <li><a href="#resume">Resume'</a>
+            <li><a id="resume-btn" href="javascript:void(0)">Resume'</a>
             </li>
-            <li><a href="#SkateSeshs">Blading-Adventures</a>
+            <li><a id="skate-sesh-btn" href="javascript:void(0)">Blading-Adventures</a>
             </li>
         </ul>
     </nav>
-    <main>
-        <!--h1#intro{Hugo F. Cedano}(div.Container>ul>li.items$*4)-->
-        <!-- FollowMeTwitterButton -->
-        <h2 id="intro">Hugo F. Cedano</h2>
-        <div class="twitter-button-container">
-            <a href="https://twitter.com/HugoCe17" class="twitter-follow-button" data-width="400px" data-show-count="false" data-show-screen-name="false"></a>
+    <main id="home">
+        <div class="about-me">
+            <!--h1#intro{Hugo F. Cedano}(div.Container>ul>li.items$*4)-->
+            <!-- FollowMeTwitterButton -->
+            <h2 id="intro">Hugo F. Cedano</h2>
+            <div class="twitter-button-container">
+                <a href="https://twitter.com/HugoCe17" class="twitter-follow-button" data-width="400px" data-show-count="false" data-show-screen-name="false"></a>
+            </div>
+            <div class="container">
+                <ul>
+                </ul>
+                <!-- SC Widget -->
+                <div class="sc-container" id="SCWidget"></div>
+            </div>
         </div>
-        <div class="container">
-            <ul>
-            </ul>
-            <!-- SC Widget -->
-            <div class="sc-container" id="SCWidget"></div>
+        <div class="resume" style="display:none">
+        <br>
+            <canvas id="pdf-canvas" style="border:1px solid black"></canvas>
+        </div>
+
+        <div class="blading-adventures" style="display:none">
+            <h2>Blading Stuff</h2>
         </div>
     </main>
+
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
-
-    <!-- Twitter API / Follow Me -->
+    <!-- SoundCloud SDK -->
+    <script src="http://connect.soundcloud.com/sdk.js"></script>
+    <!-- JQuery src-->
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Use latest PDF.js build from Github -->
+    <script src="http://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <!-- Build PDF Renderer-->
+    <script src="scripts/RenderPDF.js"></script>
+    <!-- Twitter API / Follow Me btn -->
     <script>
     ! function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -94,15 +105,34 @@
         }
     }(document, "script", "twitter-wjs");
     </script>
+    <!-- 3 Btns to hide/show respective content -->
+    <script type="text/javascript">
+    $("#resume-btn").click(function() {
+        $(".about-me").hide("fast");
+        $(".blading-adventures").hide("fast");
+        $(".resume").fadeIn("fast");
+    });
 
+    $("#about-me-btn").click(function() {
+        $(".resume").hide("fast");
+        $(".blading-adventures").hide("fast");
+        $(".about-me").fadeIn("fast");
+    });
+
+    $("#skate-sesh-btn").click(function() {
+        $(".resume").fadeOut("fast");
+        $(".about-me").fadeOut("fast");
+        $(".blading-adventures").fadeIn("fast");
+    });
+    </script>
     <!-- Build embeded SC Widget -->
     <script type="text/JavaScript">
     SC.oEmbed("https://soundcloud.com/vahlk/tracks", {
         color: "#4a203d"
     }, document.getElementById("SCWidget"));
     </script>
-
     <!-- endbuild -->
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
     (function(i, s, o, g, r, a, m) {

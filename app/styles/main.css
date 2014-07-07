@@ -26,7 +26,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #4a203d;
+    background-color: #34233A;
     overflow: hidden;
     z-index: 1;
 }
@@ -119,8 +119,8 @@ button.menu img {
     bottom: 0;
     width: 250px;
     height: 100%;
-    background-color: #4a203d;
-    color: #fefefe;
+    background-color: #34233A;
+    color: #34233A;
     -webkit-transform: translate(-250px, 0);
     transform: translate(-250px, 0);
     overflow-y: scroll;
@@ -135,12 +135,11 @@ button.menu img {
 }
 .navdrawer-container h4, .navdrawer-container ul li a {
     height: auto;
-    padding: 17px 20px;
-    line-height: 1.65;
+    padding: 17px 14px;
 }
 .navdrawer-container h4 {
     background-color: white;
-    color: #4a203d;
+    color: #5C528E;
 }
 .navdrawer-container ul {
     padding: 0;
@@ -174,25 +173,24 @@ button.menu img {
 .navdrawer-container ul li a:active {
     background-color: rgba(255, 255, 255, 0.4);
 }
-
 main {
     margin: 0 auto;
     /* Height of the header */
     padding: 60px 16px 16px 16px;
-    min-height: 100%;
+    min-height: 60px;
 }
 /** Larger Screens - desktops and tablets **/
- @media all and (min-width: 800px) {
+ @media all and (min-width: 1200px) {
     .app-bar {
         position: relative;
     }
     .app-bar-container {
         display: block;
-        height: 110px;
+        height: 60px;
         max-width: 600px;
         padding: 0 16px;
         box-sizing: border-box;
-        background-color: #4a203d;
+        background-color: #34233A;
     }
     .app-bar .logo {
         float: left;
@@ -216,7 +214,7 @@ main {
     }
     nav {
         display: block;
-        margin-top: 130px;
+        margin-top: 120px;
     }
     .navdrawer-container {
         position: relative;
@@ -243,46 +241,41 @@ main {
         border: none;
     }
     main {
-        max-width: 900px;
+        max-width: 864px;
         padding-top: 0;
         min-height: initial;
+        text-align: left;
     }
-
     .navdrawer-container {
         position: relative;
         margin-top: 0;
     }
 }
-@media all and (min-width: 600px) and (max-width: 1200px) {
+@media all and (min-width: 1200px) and (max-width: 800px) {
     .app-bar .logo {
         float: none;
         width: 100%;
-        line-height: normal;
+        line-height: 1px;
         text-align: left;
-        padding-top: 36px;
-        overflow-y: hidden;
+        padding-top: 29px;
     }
     .app-bar-container {
         height: auto;
     }
     .app-bar-actions {
-        width: 100%;
+        width: auto;
     }
-    .navdrawer-container {
-        padding: 0 16px;
-        overflow-y: auto;
-    }
+ .navdrawer-container h4, .navdrawer-container ul li a {
+    height: auto;
+    padding: 13.5px 14px;
+    line-height: 1.65;
+}
     .navdrawer-container li {
         -webkit-flex: 1;
         flex: 1;
         text-align: left;
     }
-    .sc-container {
-        height: 200px;
-        width: auto;
-    }
     .twitter-button-container {
-    position: relative;
-       
+        position: relative;
     }
 }
