@@ -20,6 +20,7 @@ body {
     overflow-y: hidden;
     min-height: 100%;
 }
+
 .app-bar {
     display: block;
     width: 100%;
@@ -197,7 +198,7 @@ main {
         margin: 0;
         padding: 0;
         line-height: 130px;
-        font-size: 46px;
+        font-size: 56px;
     }
     .app-bar-actions {
         float: right;
@@ -232,7 +233,7 @@ main {
     .navdrawer-container ul {
         display: -webkit-flex;
         display: flex;
-        max-width: 864px;
+        max-width: 800px;
         margin: 0 auto;
         -webkit-flex-direction: row;
         flex-direction: row;
@@ -241,7 +242,7 @@ main {
         border: none;
     }
     main {
-        max-width: 864px;
+        max-width: 800px;
         padding-top: 0;
         min-height: initial;
         text-align: left;
@@ -263,13 +264,21 @@ main {
         height: auto;
     }
     .app-bar-actions {
-        width: auto;
+        width: 100%;
     }
- .navdrawer-container h4, .navdrawer-container ul li a {
-    height: auto;
-    padding: 13.5px 14px;
-    line-height: 1.65;
-}
+    .navdrawer-container h4, .navdrawer-container ul li a {
+        height: auto;
+        padding: 13.5px 14px;
+        line-height: 1.65;
+    }
+    .resume #pdf-canvas {
+        max-width: 150px;
+        max-height: 300px
+    }
+    .navdrawer-container {
+        padding: 0 16px;
+        overflow-y: auto;
+    }
     .navdrawer-container li {
         -webkit-flex: 1;
         flex: 1;

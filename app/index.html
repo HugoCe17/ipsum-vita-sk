@@ -42,7 +42,6 @@
             <h1 class="logo">Ipsum Vita</h1>
             <section class="app-bar-actions">
                 <!-- Put App Bar Buttons Here -->
-
             </section>
         </div>
     </header>
@@ -63,18 +62,16 @@
             <!--h1#intro{Hugo F. Cedano}(div.Container>ul>li.items$*4)-->
             <!-- FollowMeTwitterButton -->
             <h2 id="intro">Hugo F. Cedano</h2>
+            <br>
             <div class="twitter-button-container">
                 <a href="https://twitter.com/HugoCe17" class="twitter-follow-button" data-width="400px" data-show-count="false" data-show-screen-name="false"></a>
-            </div>
-            <div class="container">
-                <ul>
-                </ul>
+                <br>
                 <!-- SC Widget -->
                 <div class="sc-container" id="SCWidget"></div>
             </div>
         </div>
         <div class="resume" style="display:none">
-        <br>
+            <br>
             <canvas id="pdf-canvas" style="border:1px solid black"></canvas>
         </div>
 
@@ -93,18 +90,7 @@
     <script src="http://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <!-- Build PDF Renderer-->
     <script src="scripts/RenderPDF.js"></script>
-    <!-- Twitter API / Follow Me btn -->
-    <script>
-    ! function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (!d.getElementById(id)) {
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "http://platform.twitter.com/widgets.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }
-    }(document, "script", "twitter-wjs");
-    </script>
+
     <!-- 3 Btns to hide/show respective content -->
     <script type="text/javascript">
     $("#resume-btn").click(function() {
@@ -125,13 +111,24 @@
         $(".blading-adventures").fadeIn("fast");
     });
     </script>
+    <!-- Twitter API / Follow Me btn -->
+    <script>
+    ! function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "http://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, "script", "twitter-wjs");
+    </script>
     <!-- Build embeded SC Widget -->
     <script type="text/JavaScript">
     SC.oEmbed("https://soundcloud.com/vahlk/tracks", {
         color: "#4a203d"
     }, document.getElementById("SCWidget"));
     </script>
-    <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
