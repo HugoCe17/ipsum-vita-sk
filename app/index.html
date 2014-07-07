@@ -7,6 +7,7 @@
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bio-Zite</title>
+    <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/png">
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -63,7 +64,7 @@
             <!-- FollowMeTwitterButton -->
             <h2 id="intro">Hugo F. Cedano</h2>
             <br>
-            <div class="twitter-button-container">
+            <div class="body-container">
                 <a href="https://twitter.com/HugoCe17" class="twitter-follow-button" data-width="400px" data-show-count="false" data-show-screen-name="false"></a>
                 <br>
                 <!-- SC Widget -->
@@ -72,7 +73,7 @@
         </div>
         <div class="resume" style="display:none">
             <br>
-            <canvas id="pdf-canvas" style="border:1px solid black"></canvas>
+            <canvas id="pdf-canvas" style="border:0 solid black"></canvas>
         </div>
 
         <div class="blading-adventures" style="display:none">
@@ -90,27 +91,8 @@
     <script src="http://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <!-- Build PDF Renderer-->
     <script src="scripts/RenderPDF.js"></script>
-
-    <!-- 3 Btns to hide/show respective content -->
-    <script type="text/javascript">
-    $("#resume-btn").click(function() {
-        $(".about-me").hide("fast");
-        $(".blading-adventures").hide("fast");
-        $(".resume").fadeIn("fast");
-    });
-
-    $("#about-me-btn").click(function() {
-        $(".resume").hide("fast");
-        $(".blading-adventures").hide("fast");
-        $(".about-me").fadeIn("fast");
-    });
-
-    $("#skate-sesh-btn").click(function() {
-        $(".resume").hide("fast");
-        $(".about-me").hide("fast");
-        $(".blading-adventures").fadeIn("fast");
-    });
-    </script>
+    <!-- Btns-effects to hide/show respective content -->
+    <script src="scripts/ButtonEffects.js"></script>
     <!-- Twitter API / Follow Me btn -->
     <script>
     ! function(d, s, id) {

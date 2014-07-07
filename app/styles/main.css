@@ -20,7 +20,6 @@ body {
     overflow-y: hidden;
     min-height: 100%;
 }
-
 .app-bar {
     display: block;
     width: 100%;
@@ -188,17 +187,16 @@ main {
     .app-bar-container {
         display: block;
         height: 60px;
-        max-width: 600px;
+        max-width: 850px;
         padding: 0 16px;
         box-sizing: border-box;
         background-color: #34233A;
     }
     .app-bar .logo {
         float: left;
-        margin: 0;
         padding: 0;
-        line-height: 130px;
-        font-size: 56px;
+        line-height: 100px;
+        font-size: 55px;
     }
     .app-bar-actions {
         float: right;
@@ -242,10 +240,15 @@ main {
         border: none;
     }
     main {
-        max-width: 800px;
+        width: 800px;
+        max-width: 0 auto;
         padding-top: 0;
         min-height: initial;
         text-align: left;
+       
+    }
+    .sc-container {
+      max-width: 1200px;
     }
     .navdrawer-container {
         position: relative;
@@ -283,8 +286,5 @@ main {
         -webkit-flex: 1;
         flex: 1;
         text-align: left;
-    }
-    .twitter-button-container {
-        position: relative;
     }
 }
