@@ -1,4 +1,6 @@
-    'use strict';
+'use strict';
+
+$(document).ready(function() {
 
     $('#resume-btn').click(function() {
         $('.about-me').hide('fast');
@@ -17,3 +19,4 @@
         $('.about-me').hide('fast');
         $('.blading-adventures').fadeIn('fast');
     });
+});
