@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "iframe": "^0.1.3",
-    "pdf.js": "^0.1.0"
+    "pdf.js": "^0.1.0",
+    "jquery": "^2.1.1"
   }
 }

@@ -1,7 +1,6 @@
 'use strict';
 
 $(document).ready(function() {
-
     //Disable workers to avoid cross-oriding issue
     PDFJS.disableWorker = true;
     PDFJS.getDocument('PDF/Resume2014.pdf').then(function getPDFResume(pdf) {
