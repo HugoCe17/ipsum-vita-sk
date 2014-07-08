@@ -77,7 +77,7 @@
         </div>
 
         <div class="blading-adventures" style="display:none">
-            <h2>Coming Soon :) </h2>
+            <h2>Coming Soon :)</h2>
         </div>
     </main>
 
@@ -107,9 +107,7 @@
     </script>
     <!-- Build embeded SC Widget -->
     <script type="text/JavaScript">
-    SC.oEmbed("https://soundcloud.com/vahlk/tracks", {
-        color: "#4a203d"
-    }, document.getElementById("SCWidget"));
+        SC.oEmbed("https://soundcloud.com/vahlk/tracks", { color: "#4a203d" }, document.getElementById("SCWidget"));
     </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -120,13 +118,36 @@
             (i[r].q = i[r].q || []).push(arguments)
         }, i[r].l = 1 * new Date();
         a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
+            m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
     ga('create', 'UA-XXXXX-X');
     ga('send', 'pageview');
+    </script>
+    <!-- Hide Content on btn clicks -->
+    <script>
+    $(document).ready(function() {
+
+        $('#resume-btn').click(function() {
+            $('.about-me').hide('fast');
+            $('.blading-adventures').hide('fast');
+            $(".resume").fadeIn("fast");
+        });
+
+        $("#about-me-btn").click(function() {
+            $('.resume').hide('fast');
+            $('.blading-adventures').hide('fast');
+            $('.about-me').fadeIn('fast');
+        });
+
+        $('#skate-sesh-btn').click(function() {
+            $('.resume').hide('fast');
+            $('.about-me').hide('fast');
+            $('.blading-adventures').fadeIn('fast');
+        });
+    });
     </script>
     <!-- Built with love using Web Starter Kit -->
 
