@@ -5,7 +5,8 @@
  * Web Starter Kit team.
  *
  */
- html, body {
+
+html, body {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -13,12 +14,15 @@
 }
 body {
     position: relative;
-    font-family:'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
     font-weight: 300;
     background-color: #FFFFFF;
     box-sizing: border-box;
     overflow-y: hidden;
     min-height: 100%;
+}
+#map-canvas {
+    max-width: none;
 }
 .app-bar {
     display: block;
@@ -33,7 +37,7 @@ body {
 .app-bar-container {
     display: -webkit-flex;
     display: flex;
-    width:100%;
+    width: 100%;
     height: 60px;
     position: relative;
     -webkit-flex-direction: row;
@@ -94,7 +98,7 @@ body {
     background-color: rgba(255, 255, 255, 0.4);
 }
 button.menu img {
-    height:24px;
+    height: 24px;
     width: 24px;
 }
 .promote-layer {
@@ -180,7 +184,8 @@ main {
     min-height: 60px;
 }
 /** Larger Screens - desktops and tablets **/
- @media all and (min-width: 1200px) {
+
+@media all and (min-width: 1200px) {
     .app-bar {
         position: relative;
     }
@@ -202,7 +207,7 @@ main {
         float: right;
     }
     .app-bar::after {
-        content:' ';
+        content: ' ';
         display: block;
         height: 0;
         overflow: hidden;
@@ -245,10 +250,12 @@ main {
         padding-top: 0;
         min-height: initial;
         text-align: left;
-       
     }
     .sc-container {
-      max-width: 1200px;
+        max-width: 1200px;
+    }
+    .map-container {
+        max-width: auto;
     }
     .navdrawer-container {
         position: relative;
@@ -282,6 +289,7 @@ main {
         padding: 0 16px;
         overflow-y: auto;
     }
+
     .navdrawer-container li {
         -webkit-flex: 1;
         flex: 1;

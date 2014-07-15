@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bio-Zite</title>
+    <title>Ipsum Vita</title>
     <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/png">
 
     <!-- Add to homescreen for Chrome on Android -->
@@ -21,6 +21,7 @@
     <!-- Tile icon for Win8 (144x144 + tile color) -->
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#4a203d">
+
 
     <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
     <!--
@@ -56,16 +57,17 @@
             </li>
             <li><a id="skate-sesh-btn" href="javascript:void(0)">Adventures</a>
             </li>
+            <li><a id="google-maps-btn" href="javascript:void(0)">Google Maps</a>
+            </li>
         </ul>
     </nav>
     <main id="home">
         <div class="about-me">
             <!--h1#intro{Hugo F. Cedano}(div.Container>ul>li.items$*4)-->
             <!-- FollowMeTwitterButton -->
-            <h2 id="intro">Hugo F. Cedano</h2>
-            <br>
+            <p>A place where creativity blends music & technology to deliver some original tracks through a minimalistic site built with Google's Web starter kit</p>
             <div class="body-container">
-                <a href="https://twitter.com/HugoCe17" class="twitter-follow-button" data-width="400px" data-show-count="false" data-show-screen-name="false"></a>
+                <a href="https://twitter.com/HugoCe17" class="twitter-follow-button" data-width="400px" data-show-count="false" data-show-screen-name="true"></a>
                 <br>
                 <!-- SC Widget -->
                 <div class="sc-container" id="SCWidget"></div>
@@ -75,24 +77,43 @@
             <br>
             <canvas id="pdf-canvas" style="border:0 solid black"></canvas>
         </div>
-
         <div class="blading-adventures" style="display:none">
             <h2>Coming Soon :)</h2>
         </div>
+        <div class="map-container" style="display:none">
+            <h2>Feeling lost?</h2>
+            <div id="map-canvas" style="width:800px;height:400px;"></div>
+        </div>
     </main>
-
+    <footer id="gc-footer">
+        <div class="container">
+            <p><a href="#">Back to top</a>
+            </p>
+        </div>
+    </footer>
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
     <!-- SoundCloud SDK -->
     <script src="http://connect.soundcloud.com/sdk.js"></script>
     <!-- JQuery from Google servers -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Google Maps API src -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfaVSXnoZwNluE8_f9uuitVvMI0hvQ64c">
+    </script>
     <!-- Use latest PDF.js build from Github -->
-    <script src="http://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
     <!-- Build PDF Renderer-->
     <script src="scripts/RenderPDF.js"></script>
     <!-- Btns-effects to hide/show respective content -->
     <script src="scripts/ButtonEffects.js"></script>
+    <!-- Google Maps-->
+    <script src="scripts/googleMaps.js"></script>
+    <script type="text/javascript">
+    function displayMap() {
+        document.getElementById('map-canvas').style.display = "block";
+        initialize();
+    }
+    </script>
     <!-- Twitter API / Follow Me btn -->
     <script>
     ! function(d, s, id) {
@@ -129,20 +150,30 @@
     <!-- Hide Content on btn clicks -->
     <script>
     $(document).ready(function() {
+        $('#about-me-btn').click(function() {
+            $('.resume').hide('fast');
+            $('.blading-adventures').hide('fast');
+            $('.map-container').hide('fast');
+            $('.about-me').fadeIn('fast');
+        });
         $('#resume-btn').click(function() {
             $('.about-me').hide('fast');
             $('.blading-adventures').hide('fast');
+            $('.map-container').hide('fast');
             $(".resume").fadeIn("fast");
-        });
-        $("#about-me-btn").click(function() {
-            $('.resume').hide('fast');
-            $('.blading-adventures').hide('fast');
-            $('.about-me').fadeIn('fast');
         });
         $('#skate-sesh-btn').click(function() {
             $('.resume').hide('fast');
             $('.about-me').hide('fast');
+            $('.map-container').hide('fast');
             $('.blading-adventures').fadeIn('fast');
+        });
+        $('#google-maps-btn').click(function() {
+            $('.resume').hide('fast');
+            $('.about-me').hide('fast');
+            $('.blading-adventures').hide('fast');
+            $('.map-container').show('fast');
+            initialize();
         });
     });
     </script>
