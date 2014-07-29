@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="styles/h5bp.css">
     <link rel="stylesheet" href="styles/components/components.css">
     <link rel="stylesheet" href="styles/main.css">
+    <!-- Google Maps API src -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfaVSXnoZwNluE8_f9uuitVvMI0hvQ64c">
+    </script>
     <!-- endbuild -->
 </head>
 
@@ -75,14 +78,14 @@
         </div>
         <div class="resume" style="display:none">
             <br>
-            <canvas id="pdf-canvas" style="border:0 solid black"></canvas>
+            <canvas id="pdf-canvas" style="border:1 solid black"></canvas>
         </div>
         <div class="blading-adventures" style="display:none">
             <h2>Coming Soon :)</h2>
         </div>
         <div class="map-container" style="display:none">
             <h2>Feeling lost?</h2>
-            <div id="map-canvas" style="width:800px;height:400px;"></div>
+            <div id="map-canvas"></div>
         </div>
     </main>
     <footer id="gc-footer">
@@ -97,23 +100,8 @@
     <script src="http://connect.soundcloud.com/sdk.js"></script>
     <!-- JQuery from Google servers -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Google Maps API src -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfaVSXnoZwNluE8_f9uuitVvMI0hvQ64c">
-    </script>
     <!-- Use latest PDF.js build from Github -->
     <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
-    <!-- Build PDF Renderer-->
-    <script src="scripts/RenderPDF.js"></script>
-    <!-- Btns-effects to hide/show respective content -->
-    <script src="scripts/ButtonEffects.js"></script>
-    <!-- Google Maps-->
-    <script src="scripts/googleMaps.js"></script>
-    <script type="text/javascript">
-    function displayMap() {
-        document.getElementById('map-canvas').style.display = "block";
-        initialize();
-    }
-    </script>
     <!-- Twitter API / Follow Me btn -->
     <script>
     ! function(d, s, id) {
@@ -128,9 +116,10 @@
     </script>
     <!-- Build embeded SC Widget -->
     <script type="text/JavaScript">
-        SC.oEmbed("https://soundcloud.com/vahlk/tracks", { color: "#4a203d" }, document.getElementById("SCWidget"));
+    SC.oEmbed("https://soundcloud.com/vahlk/tracks", {
+        color: "#4a203d"
+    }, document.getElementById("SCWidget"));
     </script>
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
     (function(i, s, o, g, r, a, m) {
@@ -139,7 +128,7 @@
             (i[r].q = i[r].q || []).push(arguments)
         }, i[r].l = 1 * new Date();
         a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
+        m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
@@ -173,12 +162,103 @@
             $('.about-me').hide('fast');
             $('.blading-adventures').hide('fast');
             $('.map-container').show('fast');
-            initialize();
         });
     });
     </script>
-    <!-- Built with love using Web Starter Kit -->
+    <!-- Render Resume PDF -->
+    <script>
+    $(document).ready(function() {
+        //Disable workers to avoid cross-oriding issue
+        PDFJS.disableWorker = true;
+        PDFJS.getDocument('PDF/Resume2014.pdf').then(function getPDFResume(pdf) {
+            //
+            // Fetch first Page
+            //
+            pdf.getPage(1).then(function getPageResume(page) {
+                var scale = 1;
+                var viewport = page.getViewport(scale);
+                //
+                // Prepare canvast using PDF page dimensions
+                //
+                var canvas = document.getElementById('pdf-canvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                //
+                // Render PDG page into canvas context
+                //
+                page.render({
+                    canvasContext: context,
+                    viewport: viewport
+                });
+            });
+        });
+    });
+    </script>
+    <!-- Google MAPs -->
+    <script>
+    // Note: This method requires that you consent to location sharing when
+    // prompted by your browser. If you see a blank space instead of the map, this
+    // is probably because you have denied permission for location sharing
+    // or your browser does not support geolocation.
+    var map,
+        mapOptions,
+        pos,
+        marker;
 
+    function initialize() {
+        var mapOptions = {
+            zoom: 6,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+        google.maps.event.addDomListener(window, "resize", function() {
+            var center = map.getCenter();
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(center);
+        });
+    };
+    // Try HTML5 geolocation
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            //get current geolocation and store it into a variable object
+            pos = new google.maps.LatLng(position.coords.latitude,
+                position.coords.longitude);
+            //initialize marker with properties
+            marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                animation: google.maps.Animation.BOUNCE
+            });
+            map.setCenter(pos);
+        }, function() {
+            handleNoGeolocation(true);
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleNoGeolocation(false);
+    }
+    function handleNoGeolocation(errorFlag) {
+        if (errorFlag) {
+            var content = 'Error: The Geolocation service failed.';
+        } else {
+            var content = 'Error: Your browser doesn\'t support geolocation.';
+        }
+
+        var options = {
+            map: map,
+            position: new google.maps.LatLng(60, 105),
+            content: content
+        };
+        var infowindow = new google.maps.InfoWindow(options);
+        map.setCenter(options.position);
+    }
+    //listeners
+    google.maps.event.addDomListener(window, "load", initialize);
+    </script>
+
+    <!-- Built with love using Web Starter Kit -->
 </body>
 
 </html>

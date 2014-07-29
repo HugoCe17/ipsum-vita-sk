@@ -21,8 +21,10 @@ body {
     overflow-y: hidden;
     min-height: 100%;
 }
-#map-canvas {
-    max-width: none;
+
+.map-container #map-canvas{
+    width: 850px;
+    height: 400px;
 }
 .app-bar {
     display: block;
@@ -254,8 +256,8 @@ main {
     .sc-container {
         max-width: 1200px;
     }
-    .map-container {
-        max-width: auto;
+    .map-container #map-canvas {
+        width: 800px;
     }
     .navdrawer-container {
         position: relative;
@@ -281,7 +283,7 @@ main {
         padding: 13.5px 14px;
         line-height: 1.65;
     }
-    .resume #pdf-canvas {
+    .resume #pdf-canvas .map-container #map-canvas {
         max-width: 150px;
         max-height: 300px
     }
