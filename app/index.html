@@ -60,18 +60,23 @@
             </li>
             <li><a id="skate-sesh-btn" href="javascript:void(0)">Adventures</a>
             </li>
-            <li><a id="google-maps-btn" href="javascript:void(0)">Google Maps</a>
-            </li>
         </ul>
     </nav>
     <main id="home">
         <div class="about-me">
             <!--h1#intro{Hugo F. Cedano}(div.Container>ul>li.items$*4)-->
             <!-- FollowMeTwitterButton -->
-            <p>A place where creativity blends music & technology to deliver some original tracks through a minimalistic site built with Google's Web starter kit</p>
-            <div class="body-container">
-                <a href="https://twitter.com/HugoCe17" class="twitter-follow-button" data-width="400px" data-show-count="false" data-show-screen-name="true"></a>
+            <p>
+                A minimalistic site built with Google's Web starter kit & some free music by yours truly; maybe a cover or two included
+                <ul class="list-group">
+                    <li class="list-group-item">Coding/Developing</li>
+                    <li class="list-group-item">Jamming/Music</li>
+                    <li class="list-group-item">Blading/Falling</li>
+                </ul>
                 <br>
+                <a href="https://twitter.com/HugoCe17" class="twitter-follow-button" data-width="400px" data-show-count="false" data-show-screen-name="true"></a>
+            </p>
+            <div class="body-container">
                 <!-- SC Widget -->
                 <div class="sc-container" id="SCWidget"></div>
             </div>
@@ -81,11 +86,27 @@
             <canvas id="pdf-canvas" style="border:1 solid black"></canvas>
         </div>
         <div class="blading-adventures" style="display:none">
-            <h2>Coming Soon :)</h2>
+            <h2>Blading past cars, pedestrians, chasing dogs... dehydrating times, muscle cramps - LeBron knows</h2>
+            <h4>post0</h4>
+            <p>
+                About a year ago, I had this idea that kept coming up, "Why not SKATE like I use to, back when I was 9-10 years old?" I'm 24 now and figured it would be a great way to start <i>getting shape</i>. I went online, queried Google a few times to see if rollerblading was even relevant.
+            </p>
+            <p>
+                Such was the case that <a href="http://www.reddit.com/r/rollerblading/"><i>Reddit</i></a>, conveniently had a plethora of information on rollerblading. Thank you Reddit. I then mostly <i>googled</i> for brand names and respective cons & pros of skates within each brand. I also wanted to know why some skates were noticeably more expensive than others but that is another telling for another time.
+            </p>
+            <p>
+                I purchased my first pair of skates in a really long time. They were the "OK" of <a href="http://www.sportsauthority.com/BLADERUNNER-Mens-Advantage-Pro-Inline-Skates/product.jsp?productId=12283378&cp=3084895.2716606.2734286&parentPage=family"><i>recreational skates</i></a> and I did not want to buy a pair of more expensive skates because I knew I would be spending most of the first few months of my trial period falling... I've fallen plenty. At a year later and I still fall; just not as goofy and with less bruising. All in all, I didn't want to over buy not knowing if I would just store these away or even return them.
+            </p>
+            <p>
+                Three months after I bought my Bladerunners, I thought I'd get a new pair of skates: they were <a href="http://www.seba-usa.com/skates/fr/fr1-84/"><i>Sebas.</i></a> I was inspired by some folks on YouTube to tackle my local roads instead of just skating side walks and I wanted something that would withstand jumping on and off ledges and curbs. Sebas are branded as freestyle type rollerblades that allow for exceptional maneuverability. My pair came equipped with 84mm wheels and I was genuinely happy with my purchase.
+            </p>
+            <p>
+                A year ago I had a cool idea to bought a pair of rollerblades to indulge in nostalgia and lose weight; as a result of such, I'm 50 pounds lighter, I am no longer a cigarette smoker, and I created this web app to show off some cool adventures where people might get to see me face plant. More folks should recall what kid ideas they had that were astonishing to them than; I believe that doing so allows creativity to take <a href="http://www.imdb.com/character/ch0361372/"><i>Groot</i></a>.
+            </p>
+
         </div>
-        <div onload="initialize()" class="map-container" style="display:none">
-            <h2>Feeling lost?</h2>
-            <div onload="initialize()" id="map-canvas"></div>
+        <div class="map-container" style="display:none">
+
         </div>
     </main>
     <footer id="gc-footer">
@@ -171,7 +192,6 @@
             $('.about-me').hide('fast');
             $('.blading-adventures').hide('fast');
             $('.map-container').show('fast');
-            window.setTimeout(initialize(), 5000);
         });
     });
     </script>
@@ -246,4 +266,5 @@
     </script>
     <!-- Built with love using Web Starter Kit -->
 </body>
+
 </html>
