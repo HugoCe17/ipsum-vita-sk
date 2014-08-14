@@ -32,9 +32,6 @@
     <link rel="stylesheet" href="styles/h5bp.css">
     <link rel="stylesheet" href="styles/components/components.css">
     <link rel="stylesheet" href="styles/main.css">
-    <!-- Google Maps API src -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfaVSXnoZwNluE8_f9uuitVvMI0hvQ64c">
-    </script>
     <!-- endbuild -->
 </head>
 
@@ -60,6 +57,8 @@
             </li>
             <li><a id="skate-sesh-btn" href="javascript:void(0)">Adventures</a>
             </li>
+            <li><a id="phaser-game-btn" href="javascript:void(0)">PhaserTesting</a>
+            </li>
         </ul>
     </nav>
     <main id="home">
@@ -67,11 +66,12 @@
             <!--h1#intro{Hugo F. Cedano}(div.Container>ul>li.items$*4)-->
             <!-- FollowMeTwitterButton -->
             <p>
-                A minimalistic site built with Google's Web starter kit & some free music by yours truly; maybe a cover or two included
+                A minimalistic site built with Google's Web starter kit & some free music by yours truly; maybe a cover or two included.
                 <ul class="list-group">
-                    <li class="list-group-item">Coding/Developing</li>
-                    <li class="list-group-item">Jamming/Music</li>
-                    <li class="list-group-item">Blading/Falling</li>
+                    <li class="list-group-item">Development</li>
+                    <li class="list-group-item">Gaming</li>
+                    <li class="list-group-item">Music</li>
+                    <li class="list-group-item">Blading</li>
                 </ul>
                 <br>
                 <a href="https://twitter.com/HugoCe17" class="twitter-follow-button" data-width="400px" data-show-count="false" data-show-screen-name="true"></a>
@@ -98,10 +98,16 @@
             </p>
             <p>A year ago I had a cool idea to purchase a pair of rollerblades to indulge in nostalgia and lose weight; as a result of such, I'm 50 pounds lighter, I am no longer a cigarette smoker, and I created this web app to show off some cool adventures where people might get to see me face plant. More folks should recall what kid ideas they had that were astonishing to them than; I believe that doing so allows creativity to take <a href="http://www.imdb.com/character/ch0361372/"><i>Groot</i></a>.
             </p>
-
         </div>
         <div class="map-container" style="display:none">
-
+        </div>
+        <br>
+        <div class="game-container" style="display:none">
+            <div id="game-canvas">
+                <p>
+                    Copyright © 2006 - 2014 Photon Storm Ltd. All rights reserved. Assets belong to Photon Storm.
+                </p>
+            </div>
         </div>
     </main>
     <footer id="gc-footer">
@@ -112,13 +118,14 @@
     </footer>
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
+    <!-- Phaser Engine -->
+    <script src="scripts/phaser.min.js"></script>
     <!-- SoundCloud SDK -->
     <script src="http://connect.soundcloud.com/sdk.js"></script>
     <!-- JQuery from Google servers -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Use latest PDF.js build from Github -->
     <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
-    <script type="text/javascript" src="scripts/gmap3.min.js"></script>
     <!-- Twitter API / Follow Me btn -->
     <script>
     ! function(d, s, id) {
@@ -167,97 +174,146 @@
         $('#about-me-btn').click(function() {
             $('.resume').hide('fast');
             $('.blading-adventures').hide('fast');
-            $('.map-container').hide('fast');
+            $('.game-container').hide('fast');
             $('.about-me').fadeIn('fast');
         });
         $('#resume-btn').click(function() {
             $('.about-me').hide('fast');
             $('.blading-adventures').hide('fast');
-            $('.map-container').hide('fast');
-            $(".resume").fadeIn("fast");
+            $('.game-container').hide('fast');
+            $('.resume').fadeIn("fast");
         });
         $('#skate-sesh-btn').click(function() {
             $('.resume').hide('fast');
             $('.about-me').hide('fast');
-            $('.map-container').hide('fast');
+            $('.game-container').hide('fast');
             $('.blading-adventures').fadeIn('fast');
         });
-        $('#google-maps-btn').click(function() {
+        $('#phaser-game-btn').click(function() {
             $('.resume').hide('fast');
             $('.about-me').hide('fast');
             $('.blading-adventures').hide('fast');
-            $('.map-container').show('fast');
+            $('.game-container').show('fast');
         });
     });
     </script>
-    <!-- Google MAPs -->
-    <script>
-    // Note: This method requires that you consent to location sharing when
-    // prompted by your browser. If you see a blank space instead of the map, this
-    // is probably because you have denied permission for location sharing
-    // or your browser does not support geolocation.
-    var map,
-        mapOptions,
-        pos,
-        marker;
-
-    function displayMap() {
-        var center = map.getCenter();
-        google.maps.event.trigger(map, "resize");
-        map.setCenter(center);
-    };
-
-    function initialize() {
-        var mapOptions = {
-            zoom: 8,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
-    };
-    // Try HTML5 geolocation
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            //get current geolocation and store it into a variable object
-            pos = new google.maps.LatLng(position.coords.latitude,
-                position.coords.longitude);
-            //initialize marker with properties
-            marker = new google.maps.Marker({
-                position: pos,
-                map: map,
-                animation: google.maps.Animation.BOUNCE
-            });
-            map.setCenter(pos);
-        }, function() {
-            handleNoGeolocation(true);
-        });
-    } else {
-        // Browser doesn't support Geolocation
-        handleNoGeolocation(false);
-    }
-
-    function handleNoGeolocation(errorFlag) {
-        if (errorFlag) {
-            var content = 'Error: The Geolocation service failed.';
-        } else {
-            var content = 'Error: Your browser doesn\'t support geolocation.';
-        }
-        var options = {
-            map: map,
-            position: new google.maps.LatLng(60, 105),
-            content: content
-        };
-        var infowindow = new google.maps.InfoWindow(options);
-        map.setCenter(options.position);
-    }
-
-    //listeners
-    google.maps.event.addDomListener(window, "load", initialize);
-    google.maps.event.addDomListener(window, "resize", function() {
-        var center = map.getCenter();
-        google.maps.event.trigger(map, "resize");
-        map.setCenter(center);
+    <script type="text/javascript">
+    var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game-canvas', {
+        preload: preload,
+        create: create,
+        update: update
     });
+
+    function preload() {
+        game.load.image('sky', '/images/assets/sky.png');
+        game.load.image('ground', '/images/assets/platform.png');
+        game.load.image('star', '/images/assets/star.png');
+        game.load.spritesheet('dude', '/images/assets/dude.png', 32, 48);
+    }
+
+    var platforms, player, cursors, stars;
+
+    function create() {
+
+        //  We're going to be using physics, so enable the Arcade Physics system
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        //  A simple background for our game
+        game.add.sprite(0, 0, 'sky');
+
+        //  The platforms group contains the ground and the 2 ledges we can jump on
+        platforms = game.add.group();
+
+        //  We will enable physics for any object that is created in this group
+        platforms.enableBody = true;
+
+        // Here we create the ground.
+        var ground = platforms.create(0, game.world.height - 64, 'ground');
+
+        //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+        ground.scale.setTo(2, 2);
+
+        //  This stops it from falling away when you jump on it
+        ground.body.immovable = true;
+
+        //  Now let's create two ledges
+        var ledge = platforms.create(400, 400, 'ground');
+
+        ledge.body.immovable = true;
+
+        ledge = platforms.create(-150, 250, 'ground');
+
+        ledge.body.immovable = true;
+
+        // The player and its settings
+        player = game.add.sprite(32, game.world.height - 150, 'dude');
+
+        //  We need to enable physics on the player
+        game.physics.arcade.enable(player);
+
+        //  Player physics properties. Give the little guy a slight bounce.
+        player.body.bounce.y = 0.2;
+        player.body.gravity.y = 300;
+        player.body.collideWorldBounds = true;
+
+        //  Our two animations, walking left and right.
+        player.animations.add('left', [0, 1, 2, 3], 10, true);
+        player.animations.add('right', [5, 6, 7, 8], 10, true);
+
+        // Add Stars to collect
+        stars = game.add.group();
+
+        stars.enableBody = true;
+
+        // Here we'll create 12 starts evenly spaced apart
+        for (var i = 0; i < 12; i++) {
+            // Create a star inside the 'stars group';
+            var star = stars.create(i * 70, 0, 'star');
+
+            // Let gravity work its magic
+            star.body.gravity.y = 80;
+
+            // This just gives each star a slightly random bounce value
+            star.body.bounce.y = 0.7 + Math.random() * 0.2;
+            star.body.bounce.x = 2 + Math.random() * 0.2;
+        }
+
+        // Controls
+        cursors = game.input.keyboard.createCursorKeys();
+
+    }
+
+    function update() {
+        // Collide the player and the stars with the platforms
+        game.physics.arcade.collide(player, platforms);
+        game.physics.arcade.collide(stars, platforms);
+        game.physics.arcade.overlap(player, stars, collectStar, null, this);
+
+        // Reset the player's velocity (movement restriction)
+        player.body.velocity.x = 0;
+        if (cursors.left.isDown) {
+            // Move left
+            player.body.velocity.x = -200;
+            player.animations.play('left');
+        } else if (cursors.right.isDown) {
+            // Move right
+            player.body.velocity.x = 200;
+            player.animations.play('right');
+        } else {
+            // Stand still
+            player.animations.stop();
+            player.frame = 4;
+        }
+        // Allow player to jumpe if they are touching the ground.
+        if (cursors.up.isDown && player.body.touching.down) {
+            player.body.velocity.y = -500;
+        }
+    }
+
+    function collectStar(player, star) {
+        // Removes the star from screen
+        star.kill();
+    }
     </script>
     <!-- Built with love using Web Starter Kit -->
 </body>
